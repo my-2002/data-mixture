@@ -1,0 +1,39 @@
+### model
+model_name_or_path: {path_to_base_model}
+
+### method
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+
+### dataset
+dataset: {train_dataset_name}
+template: qwen
+cutoff_len: {cutoff_len}
+max_samples: 100000
+overwrite_cache: true
+preprocessing_num_workers: 16
+
+### output
+output_dir: {path_to_trained_model}
+logging_steps: 5
+save_steps: 100
+plot_loss: true
+overwrite_output_dir: true
+
+### train
+per_device_train_batch_size: {batch_size}
+gradient_accumulation_steps: {grad_accum}
+learning_rate: {learning_rate}
+num_train_epochs: {epoch}
+lr_scheduler_type: cosine
+warmup_ratio: {warmup_ratio}
+bf16: true
+ddp_timeout: 180000000
+
+### eval
+# val_size: 0.1
+# per_device_eval_batch_size: 4
+# eval_strategy: steps
+#eval_steps: 500
