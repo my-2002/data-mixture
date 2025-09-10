@@ -8,8 +8,8 @@ with open("./config/config_info.json", 'r', encoding='utf-8') as file:
 
 parser = argparse.ArgumentParser()
 #parser.add_argument("-FT", "--finetuning-type", type=str, help="The type of finetuning method", choices=["lora", "fft"])
-parser.add_argument("-MS", "--mixing-strategy", type=str, help="The strategy of data mixing", choices=mixing_strategy_list, required=True)
-parser.add_argument("-CN", "--config-number", type=int, help="The config number of data mixing", choices=list(configs), required=True)
+parser.add_argument("-MS", "--mixing-strategy", type=str, help="The strategy of data mixing", required=True)
+parser.add_argument("-CN", "--config-number", type=str, help="The config number of data mixing", choices=list(configs), required=True)
 #parser.add_argument("-PBM", "--path-to-base-model", type=str, help="The path to the base model")
 #parser.add_argument("-CL", "--cutoff-len", type=int, help="The cutoff length of the model")
 #parser.add_argument("-E", "--epoch", type=float, help="The number of epochs for training")
