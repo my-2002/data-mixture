@@ -1,4 +1,5 @@
-
+import yaml
+from pathlib import Path
 
 class ConfigGenerator:
     def __init__(self):
@@ -9,75 +10,43 @@ class ConfigGenerator:
         finetuning_type : str,
         mixing_strategy : str,
         config_number : int,
-        path_to_base_model = "/data/models/Qwen2.5-7B-Instruct",
-        cutoff_len = 2048,
-        epoch = 3,
-        batch_size = 1,
-        grad_accum = 8,
-        learning_rate = None,
-        warmup_ratio = None
-    ):
-        if finetuning_type not in ["lora", "fft"]:
-            raise ValueError("Unsupported finetuning type")
-        
-        train_dataset_name = f"datamix_{mixing_strategy}_config{config_number}"
-        path_to_trained_model = f"../datamix/sft_results/{mixing_strategy}_config{config_number}/train"
-        path_to_merged_model = f"../datamix/sft_results/{mixing_strategy}_config{config_number}/merge"
-
-        if finetuning_type == "lora":
-            self.generate_lora_config(
-                train_dataset_name = train_dataset_name,
-                path_to_trained_model = path_to_trained_model,
-                path_to_merged_model = path_to_merged_model, 
-                path_to_base_model = path_to_base_model, 
-                cutoff_len = cutoff_len, 
-                epoch = epoch, 
-                batch_size = batch_size, 
-                grad_accum = grad_accum, 
-                learning_rate = learning_rate, 
-                warmup_ratio = warmup_ratio
-            )
-        else:
-            self.generate_fft_config(
-                train_dataset_name = train_dataset_name,
-                path_to_trained_model = path_to_trained_model,
-                path_to_merged_model = path_to_merged_model, 
-                path_to_base_model = path_to_base_model, 
-                cutoff_len = cutoff_len, 
-                epoch = epoch, 
-                batch_size = batch_size, 
-                grad_accum = grad_accum, 
-                learning_rate = learning_rate, 
-                warmup_ratio = warmup_ratio
-            )
-        
-
-    def generate_lora_config(
-        self, 
-        train_dataset_name : str,
-        path_to_trained_model : str,
-        path_to_merged_model : str,
         path_to_base_model : str,
         cutoff_len : int,
         epoch : float,
         batch_size : int,
         grad_accum : int,
-        learning_rate = 5e-5,
-        warmup_ratio = 0.1
+        learning_rate : float,
+        warmup_ratio : float
     ):
-        pass
+        if finetuning_type not in ["lora", "fft"]:
+            raise ValueError("Unsupported finetuning type")
+        
+        folder_path = Path(f"{mixing_strategy}_config{config_number}")
+        if not folder_path.exists():
+            folder_path.mkdir(exist_ok=True)
 
-    def generate_fft_config(
-        self, 
-        train_dataset_name : str,
-        path_to_trained_model : str,
-        path_to_merged_model : str,
-        path_to_base_model : str,
-        cutoff_len : int,
-        epoch : float,
-        batch_size : int,
-        grad_accum = int,
-        learning_rate = 5e-6,
-        warmup_ratio = 0.03
-    ):
-        pass
+        if finetuning_type == "lora":
+            train_config = yaml.safe_load(open("./template/train_lora.yaml"))
+            merge_config = yaml.safe_load(open("./template/merge_lora.yaml"))
+        else:
+            train_config = yaml.safe_load(open("./template/train_fft.yaml"))
+            merge_config = yaml.safe_load(open("./template/merge_fft.yaml"))
+
+        train_config['model_name_or_path'] = path_to_base_model
+        train_config['dataset'] = f"datamix_{mixing_strategy}_config{config_number}"
+        train_config['cutoff_len'] = cutoff_len
+        train_config['output_dir'] = f"../datamix/sft_results/{mixing_strategy}_config{config_number}/train"
+        train_config['per_device_train_batch_size'] = batch_size
+        train_config['gradient_accumulation_steps'] = grad_accum
+        train_config['learning_rate'] = learning_rate
+        train_config['num_train_epochs'] = epoch
+        train_config['warmup_ratio'] = warmup_ratio
+        with open(f"./{mixing_strategy}_config{config_number}/train.yaml", 'w', encoding='utf-8') as f:
+            yaml.dump(train_config, f, sort_keys=False, default_flow_style=False)
+
+        merge_config = yaml.safe_load(open("./template/merge_lora.yaml"))
+        merge_config['model_name_or_path'] = path_to_base_model
+        merge_config['adapter_name_or_path'] = f"../datamix/sft_results/{mixing_strategy}_config{config_number}/train"
+        merge_config['export_dir'] = f"../datamix/sft_results/{mixing_strategy}_config{config_number}/merge"
+        with open(f"./{mixing_strategy}_config{config_number}/merge.yaml", 'w', encoding='utf-8') as f:
+            yaml.dump(merge_config, f, sort_keys=False, default_flow_style=False)

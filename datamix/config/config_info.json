@@ -1,0 +1,41 @@
+{
+    "1" : {
+        "finetuning_type" : "lora",
+        "path_to_base_model" : "/data/models/Qwen2.5-7B",
+        "learning_rate" : 5e-5,
+        "warmup_ratio" : 0.1
+    },
+    "2" : {
+        "finetuning_type" : "fft",
+        "path_to_base_model" : "/data/models/Qwen2.5-7B-Instruct",
+        "cutoff_len" : 1024
+    },
+    "3" : {
+
+    },
+    "4" : {
+        "finetuning_type" : "fft",
+        "path_to_base_model" : "/data/models/Qwen2.5-7B",
+        "cutoff_len" : 1024
+    },
+    "5" : {
+        "finetuning_type" : "fft",
+        "cutoff_len" : 1024
+    },
+    "6" : {
+        "finetuning_type" : "fft",
+        "cutoff_len" : 4096
+    },
+    "7" : {
+        "finetuning_type" : "lora",
+        "cutoff_len" : 4096
+    },
+    "default" : {
+        "cutoff_len" : 2048,
+        "epoch" : 3,
+        "batch_size" : 1,
+        "grad_accum" : 8,
+        "learning_rate" : 5e-6,
+        "warmup_ratio" : 0.03
+    }
+}
