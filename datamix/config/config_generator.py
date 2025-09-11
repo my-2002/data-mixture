@@ -26,6 +26,7 @@ class ConfigGenerator:
         if not folder_path.exists():
             folder_path.mkdir(exist_ok=True)
 
+        # Generate train and merge configurations for LLaMA-Factory
         if finetuning_type == "lora":
             train_config = yaml.safe_load(open("config/train_template/train_lora.yaml"))
             merge_config = yaml.safe_load(open("config/train_template/merge_lora.yaml"))
@@ -54,12 +55,11 @@ class ConfigGenerator:
         with open(f"config/{mixing_strategy}_config{config_number}/merge.yaml", 'w', encoding='utf-8') as f:
             yaml.dump(merge_config, f, sort_keys=False, default_flow_style=False)
 
+        # Generate dataset_info in LLaMA-Factory
         with open(f"../LLaMA-Factory/data/dataset_info.json", 'r', encoding='utf-8') as file:
             dataset_info = json.load(file)
-
         dataset_info[f'datamix_{mixing_strategy}_config{config_number}'] = {
             "file_name": f"../../datamix/data/{mixing_strategy}_config{config_number}/train_data.json"
         }
-
         with open(f"../LLaMA-Factory/data/dataset_info.json", 'w', encoding='utf-8') as file:
             json.dump(dataset_info, file, indent=2)

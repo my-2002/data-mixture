@@ -325,7 +325,11 @@ opencompass/core.*
 # Ignore rules for datamix
 ########################################################################################################
 datamix/**/__pycache__/
-datamix/data/
-datamix/logs/
+datamix/config/*/
+!datamix/config/train_template/
+datamix/data/*/
+!datamix/data/.gitkeep
+datamix/logs/**
+!datamix/logs/.gitkeep
 datamix/sft_results/
 datamix/source_data/
