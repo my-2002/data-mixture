@@ -21,7 +21,7 @@ args = parser.parse_args()
 
 config = configs[args.config_number]
 default_config = configs["default"]
-ConfigGenerator().generate(
+ConfigGenerator().generate_train_config(
     finetuning_type = config["finetuning_type"],
     mixing_strategy = args.mixing_strategy,
     config_number = args.config_number,
@@ -34,3 +34,7 @@ ConfigGenerator().generate(
     warmup_ratio = config["warmup_ratio"] if "warmup_ratio" in config else default_config["warmup_ratio"]
 )
 
+ConfigGenerator().generate_eval_config(
+    model_name = f"{args.mixing_strategy}_config{args.config_number}",
+    path_to_eval_model = f"../datamix/sft_results/{args.mixing_strategy}_config{args.config_number}/merge"
+)

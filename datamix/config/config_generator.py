@@ -6,7 +6,7 @@ class ConfigGenerator:
     def __init__(self):
         pass
 
-    def generate(
+    def generate_train_config(
         self, 
         finetuning_type : str,
         mixing_strategy : str,
@@ -23,8 +23,7 @@ class ConfigGenerator:
             raise ValueError("Unsupported finetuning type")
         
         folder_path = Path(f"config/{mixing_strategy}_config{config_number}")
-        if not folder_path.exists():
-            folder_path.mkdir(exist_ok=True)
+        folder_path.mkdir(exist_ok=True)
 
         # Generate train and merge configurations for LLaMA-Factory
         if finetuning_type == "lora":
@@ -63,3 +62,36 @@ class ConfigGenerator:
         }
         with open(f"../LLaMA-Factory/data/dataset_info.json", 'w', encoding='utf-8') as file:
             json.dump(dataset_info, file, indent=2)
+
+    def generate_eval_config(
+            self,
+            model_name : str = None,
+            path_to_eval_model : str = None
+    ):
+        if path_to_eval_model is None or model_name is None:
+            raise ValueError("Provided infomation is insufficient")
+        
+        folder_path = Path(f"../opencompass/examples/data_mixture")
+        folder_path.mkdir(exist_ok=True)
+        folder_path = Path(f"../opencompass/opencompass/configs/models/data_mixture")
+        folder_path.mkdir(exist_ok=True)
+        folder_path = Path(f"../opencompass/scripts")
+        folder_path.mkdir(exist_ok=True)
+
+        with open("config/eval_template/model_template.py", 'r', encoding='utf-8') as f:
+            content = f.read()
+        modified_content = content.replace("{path_to_eval_model}", path_to_eval_model)
+        with open(f"../opencompass/opencompass/configs/models/data_mixture/model_{model_name}.py", 'w', encoding='utf-8') as f:
+            f.write(modified_content)
+
+        with open("config/eval_template/eval_template.py", 'r', encoding='utf-8') as f:
+            content = f.read()
+        modified_content = content.replace("{model_name}", model_name)
+        with open(f"../opencompass/examples/data_mixture/eval_{model_name}.py", 'w', encoding='utf-8') as f:
+            f.write(modified_content)
+
+        with open("config/eval_template/script_template.sh", 'r', encoding='utf-8') as f:
+            content = f.read()
+        modified_content = content.replace("{model_name}", model_name)
+        with open(f"../opencompass/scripts/{model_name}.sh", 'w', encoding='utf-8') as f:
+            f.write(modified_content)

@@ -2,88 +2,88 @@
 # Ignore rules for LLaMA-Factory
 ########################################################################################################
 # Byte-compiled / optimized / DLL files
-LLaMA-Factory/__pycache__/
-LLaMA-Factory/*.py[cod]
-LLaMA-Factory/*$py.class
+/LLaMA-Factory/__pycache__/
+/LLaMA-Factory/*.py[cod]
+/LLaMA-Factory/*$py.class
 
 # C extensions
-LLaMA-Factory/*.so
+/LLaMA-Factory/*.so
 
 # Distribution / packaging
-LLaMA-Factory/.Python
-LLaMA-Factory/build/
-LLaMA-Factory/develop-eggs/
-LLaMA-Factory/dist/
-LLaMA-Factory/downloads/
-LLaMA-Factory/eggs/
-LLaMA-Factory/.eggs/
-LLaMA-Factory/lib/
-LLaMA-Factory/lib64/
-LLaMA-Factory/parts/
-LLaMA-Factory/sdist/
-LLaMA-Factory/var/
-LLaMA-Factory/wheels/
-LLaMA-Factory/share/python-wheels/
-LLaMA-Factory/*.egg-info/
-LLaMA-Factory/.installed.cfg
-LLaMA-Factory/*.egg
-LLaMA-Factory/MANIFEST
+/LLaMA-Factory/.Python
+/LLaMA-Factory/build/
+/LLaMA-Factory/develop-eggs/
+/LLaMA-Factory/dist/
+/LLaMA-Factory/downloads/
+/LLaMA-Factory/eggs/
+/LLaMA-Factory/.eggs/
+/LLaMA-Factory/lib/
+/LLaMA-Factory/lib64/
+/LLaMA-Factory/parts/
+/LLaMA-Factory/sdist/
+/LLaMA-Factory/var/
+/LLaMA-Factory/wheels/
+/LLaMA-Factory/share/python-wheels/
+/LLaMA-Factory/*.egg-info/
+/LLaMA-Factory/.installed.cfg
+/LLaMA-Factory/*.egg
+/LLaMA-Factory/MANIFEST
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
-LLaMA-Factory/*.manifest
-LLaMA-Factory/*.spec
+/LLaMA-Factory/*.manifest
+/LLaMA-Factory/*.spec
 
 # Installer logs
-LLaMA-Factory/pip-log.txt
-LLaMA-Factory/pip-delete-this-directory.txt
+/LLaMA-Factory/pip-log.txt
+/LLaMA-Factory/pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-LLaMA-Factory/htmlcov/
-LLaMA-Factory/.tox/
-LLaMA-Factory/.nox/
-LLaMA-Factory/.coverage
-LLaMA-Factory/.coverage.*
-LLaMA-Factory/.cache
-LLaMA-Factory/nosetests.xml
-LLaMA-Factory/coverage.xml
-LLaMA-Factory/*.cover
-LLaMA-Factory/*.py,cover
-LLaMA-Factory/.hypothesis/
-LLaMA-Factory/.pytest_cache/
-LLaMA-Factory/cover/
+/LLaMA-Factory/htmlcov/
+/LLaMA-Factory/.tox/
+/LLaMA-Factory/.nox/
+/LLaMA-Factory/.coverage
+/LLaMA-Factory/.coverage.*
+/LLaMA-Factory/.cache
+/LLaMA-Factory/nosetests.xml
+/LLaMA-Factory/coverage.xml
+/LLaMA-Factory/*.cover
+/LLaMA-Factory/*.py,cover
+/LLaMA-Factory/.hypothesis/
+/LLaMA-Factory/.pytest_cache/
+/LLaMA-Factory/cover/
 
 # Translations
-LLaMA-Factory/*.mo
-LLaMA-Factory/*.pot
+/LLaMA-Factory/*.mo
+/LLaMA-Factory/*.pot
 
 # Django stuff:
-LLaMA-Factory/*.log
-LLaMA-Factory/local_settings.py
-LLaMA-Factory/db.sqlite3
-LLaMA-Factory/db.sqlite3-journal
+/LLaMA-Factory/*.log
+/LLaMA-Factory/local_settings.py
+/LLaMA-Factory/db.sqlite3
+/LLaMA-Factory/db.sqlite3-journal
 
 # Flask stuff:
-LLaMA-Factory/instance/
-LLaMA-Factory/.webassets-cache
+/LLaMA-Factory/instance/
+/LLaMA-Factory/.webassets-cache
 
 # Scrapy stuff:
-LLaMA-Factory/.scrapy
+/LLaMA-Factory/.scrapy
 
 # Sphinx documentation
-LLaMA-Factory/docs/_build/
+/LLaMA-Factory/docs/_build/
 
 # PyBuilder
-LLaMA-Factory/.pybuilder/
-LLaMA-Factory/target/
+/LLaMA-Factory/.pybuilder/
+/LLaMA-Factory/target/
 
 # Jupyter Notebook
-LLaMA-Factory/.ipynb_checkpoints
+/LLaMA-Factory/.ipynb_checkpoints
 
 # IPython
-LLaMA-Factory/profile_default/
-LLaMA-Factory/ipython_config.py
+/LLaMA-Factory/profile_default/
+/LLaMA-Factory/ipython_config.py
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
@@ -110,226 +110,226 @@ LLaMA-Factory/ipython_config.py
 #   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
 #   in version control.
 #   https://pdm.fming.dev/#use-with-ide
-LLaMA-Factory/.pdm.toml
+/LLaMA-Factory/.pdm.toml
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-LLaMA-Factory/__pypackages__/
+/LLaMA-Factory/__pypackages__/
 
 # Celery stuff
-LLaMA-Factory/celerybeat-schedule
-LLaMA-Factory/celerybeat.pid
+/LLaMA-Factory/celerybeat-schedule
+/LLaMA-Factory/celerybeat.pid
 
 # SageMath parsed files
-LLaMA-Factory/*.sage.py
+/LLaMA-Factory/*.sage.py
 
 # Environments
-LLaMA-Factory/.env
-LLaMA-Factory/.venv
-LLaMA-Factory/env/
-LLaMA-Factory/venv/
-LLaMA-Factory/ENV/
-LLaMA-Factory/env.bak/
-LLaMA-Factory/venv.bak/
+/LLaMA-Factory/.env
+/LLaMA-Factory/.venv
+/LLaMA-Factory/env/
+/LLaMA-Factory/venv/
+/LLaMA-Factory/ENV/
+/LLaMA-Factory/env.bak/
+/LLaMA-Factory/venv.bak/
 
 # Spyder project settings
-LLaMA-Factory/.spyderproject
-LLaMA-Factory/.spyproject
+/LLaMA-Factory/.spyderproject
+/LLaMA-Factory/.spyproject
 
 # Rope project settings
-LLaMA-Factory/.ropeproject
+/LLaMA-Factory/.ropeproject
 
 # mkdocs documentation
-LLaMA-Factory/site
+/LLaMA-Factory/site
 
 # mypy
-LLaMA-Factory/.mypy_cache/
-LLaMA-Factory/.dmypy.json
-LLaMA-Factory/dmypy.json
+/LLaMA-Factory/.mypy_cache/
+/LLaMA-Factory/.dmypy.json
+/LLaMA-Factory/dmypy.json
 
 # Pyre type checker
-LLaMA-Factory/.pyre/
+/LLaMA-Factory/.pyre/
 
 # pytype static type analyzer
-LLaMA-Factory/.pytype/
+/LLaMA-Factory/.pytype/
 
 # Cython debug symbols
-LLaMA-Factory/cython_debug/
+/LLaMA-Factory/cython_debug/
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-LLaMA-Factory/.idea/
+/LLaMA-Factory/.idea/
 
 # vscode
-LLaMA-Factory/.vscode/
+/LLaMA-Factory/.vscode/
 
 # uv
-LLaMA-Factory/uv.lock
+/LLaMA-Factory/uv.lock
 
 # custom .gitignore
-LLaMA-Factory/hf_cache/
-LLaMA-Factory/ms_cache/
-LLaMA-Factory/om_cache/
-LLaMA-Factory/cache/
-LLaMA-Factory/config/
-LLaMA-Factory/saves/
-LLaMA-Factory/output/
-LLaMA-Factory/wandb/
-LLaMA-Factory/swanlog/
-LLaMA-Factory/generated_predictions.jsonl
-LLaMA-Factory/predictions_score.json
+/LLaMA-Factory/hf_cache/
+/LLaMA-Factory/ms_cache/
+/LLaMA-Factory/om_cache/
+/LLaMA-Factory/cache/
+/LLaMA-Factory/config/
+/LLaMA-Factory/saves/
+/LLaMA-Factory/output/
+/LLaMA-Factory/wandb/
+/LLaMA-Factory/swanlog/
+/LLaMA-Factory/generated_predictions.jsonl
+/LLaMA-Factory/predictions_score.json
 
 ########################################################################################################
 # Ignore rules for opencompass
 ########################################################################################################
 
-opencompass/.DS_Store
-opencompass/output_*/
-opencompass/outputs/
-opencompass/scripts/
-opencompass/icl_inference_output/
-opencompass/.vscode/
-opencompass/tmp/
-opencompass/configs/eval_subjective_alignbench_test.py
-opencompass/configs/openai_key.py
-opencompass/configs/secrets.py
-opencompass/configs/datasets/log.json
-opencompass/configs/eval_debug*.py
-opencompass/configs/viz_*.py
-opencompass/configs/**/*_bkup.py
-opencompass/opencompass/**/*_bkup.py
-opencompass/data
-opencompass/work_dirs
-opencompass/outputs
-opencompass/models/*
-opencompass/configs/internal/
+/opencompass/.DS_Store
+/opencompass/output_*/
+/opencompass/outputs/
+/opencompass/scripts/
+/opencompass/icl_inference_output/
+/opencompass/.vscode/
+/opencompass/tmp/
+/opencompass/configs/eval_subjective_alignbench_test.py
+/opencompass/configs/openai_key.py
+/opencompass/configs/secrets.py
+/opencompass/configs/datasets/log.json
+/opencompass/configs/eval_debug*.py
+/opencompass/configs/viz_*.py
+/opencompass/configs/**/*_bkup.py
+/opencompass/opencompass/**/*_bkup.py
+/opencompass/data
+/opencompass/work_dirs
+/opencompass/outputs
+/opencompass/models/*
+/opencompass/configs/internal/
 # Byte-compiled / optimized / DLL files
-opencompass/__pycache__/
-opencompass/*.py[cod]
-opencompass/*$py.class
-opencompass/*.ipynb
+/opencompass/__pycache__/
+/opencompass/*.py[cod]
+/opencompass/*$py.class
+/opencompass/*.ipynb
 
 # C extensions
-opencompass/*.so
+/opencompass/*.so
 
 # Distribution / packaging
-opencompass/.Python
-opencompass/build/
-opencompass/develop-eggs/
-opencompass/dist/
-opencompass/downloads/
-opencompass/eggs/
-opencompass/.eggs/
-opencompass/lib/
-opencompass/lib64/
-opencompass/parts/
-opencompass/sdist/
-opencompass/var/
-opencompass/wheels/
-opencompass/*.egg-info/
-opencompass/.installed.cfg
-opencompass/*.egg
-opencompass/MANIFEST
+/opencompass/.Python
+/opencompass/build/
+/opencompass/develop-eggs/
+/opencompass/dist/
+/opencompass/downloads/
+/opencompass/eggs/
+/opencompass/.eggs/
+/opencompass/lib/
+/opencompass/lib64/
+/opencompass/parts/
+/opencompass/sdist/
+/opencompass/var/
+/opencompass/wheels/
+/opencompass/*.egg-info/
+/opencompass/.installed.cfg
+/opencompass/*.egg
+/opencompass/MANIFEST
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
-opencompass/*.manifest
-opencompass/*.spec
+/opencompass/*.manifest
+/opencompass/*.spec
 
 # Installer logs
-opencompass/pip-log.txt
-opencompass/pip-delete-this-directory.txt
+/opencompass/pip-log.txt
+/opencompass/pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-opencompass/htmlcov/
-opencompass/.tox/
-opencompass/.coverage
-opencompass/.coverage.*
-opencompass/.cache
-opencompass/nosetests.xml
-opencompass/coverage.xml
-opencompass/*.cover
-opencompass/.hypothesis/
-opencompass/.pytest_cache/
+/opencompass/htmlcov/
+/opencompass/.tox/
+/opencompass/.coverage
+/opencompass/.coverage.*
+/opencompass/.cache
+/opencompass/nosetests.xml
+/opencompass/coverage.xml
+/opencompass/*.cover
+/opencompass/.hypothesis/
+/opencompass/.pytest_cache/
 
 # Translations
-opencompass/*.mo
-opencompass/*.pot
+/opencompass/*.mo
+/opencompass/*.pot
 
 # Django stuff:
-opencompass/*.log
-opencompass/local_settings.py
-opencompass/db.sqlite3
+/opencompass/*.log
+/opencompass/local_settings.py
+/opencompass/db.sqlite3
 
 # Flask stuff:
-opencompass/instance/
-opencompass/.webassets-cache
+/opencompass/instance/
+/opencompass/.webassets-cache
 
 # Scrapy stuff:
-opencompass/.scrapy
+/opencompass/.scrapy
 
-opencompass/.idea
+/opencompass/.idea
 
 # Auto generate documentation
-opencompass/docs/en/_build/
-opencompass/docs/zh_cn/_build/
+/opencompass/docs/en/_build/
+/opencompass/docs/zh_cn/_build/
 
 # .zip
-opencompass/*.zip
+/opencompass/*.zip
 
 # sft config ignore list
-opencompass/configs/sft_cfg/*B_*
-opencompass/configs/sft_cfg/1B/*
-opencompass/configs/sft_cfg/7B/*
-opencompass/configs/sft_cfg/20B/*
-opencompass/configs/sft_cfg/60B/*
-opencompass/configs/sft_cfg/100B/*
+/opencompass/configs/sft_cfg/*B_*
+/opencompass/configs/sft_cfg/1B/*
+/opencompass/configs/sft_cfg/7B/*
+/opencompass/configs/sft_cfg/20B/*
+/opencompass/configs/sft_cfg/60B/*
+/opencompass/configs/sft_cfg/100B/*
 
-opencompass/configs/cky/
-opencompass/configs/_internal_legacy*
+/opencompass/configs/cky/
+/opencompass/configs/_internal_legacy*
 # in case llama clone in the opencompass
-opencompass/llama/
+/opencompass/llama/
 
 # in case ilagent clone in the opencompass
-opencompass/ilagent/
+/opencompass/ilagent/
 
 # ignore the config file for criticbench evaluation
-opencompass/configs/sft_cfg/criticbench_eval/*
+/opencompass/configs/sft_cfg/criticbench_eval/*
 
 # path of turbomind's model after runing `lmdeploy.serve.turbomind.deploy`
-opencompass/turbomind/
+/opencompass/turbomind/
 
 # cibench output
-opencompass/*.db
-opencompass/*.pth
-opencompass/*.pt
-opencompass/*.onnx
-opencompass/*.gz
-opencompass/*.gz.*
-opencompass/*.png
-opencompass/*.txt
-opencompass/*.jpg
-opencompass/*.json
-opencompass/*.jsonl
-opencompass/*.csv
-opencompass/*.npy
-opencompass/*.c
+/opencompass/*.db
+/opencompass/*.pth
+/opencompass/*.pt
+/opencompass/*.onnx
+/opencompass/*.gz
+/opencompass/*.gz.*
+/opencompass/*.png
+/opencompass/*.txt
+/opencompass/*.jpg
+/opencompass/*.json
+/opencompass/*.jsonl
+/opencompass/*.csv
+/opencompass/*.npy
+/opencompass/*.c
 
 # aliyun
-opencompass/core.*
+/opencompass/core.*
 
 ########################################################################################################
 # Ignore rules for datamix
 ########################################################################################################
-datamix/**/__pycache__/
-datamix/config/*/
-!datamix/config/train_template/
-datamix/data/*/
-!datamix/data/.gitkeep
-datamix/logs/**
-!datamix/logs/.gitkeep
-datamix/sft_results/
-datamix/source_data/
+/datamix/**/__pycache__/
+/datamix/config/*/
+!/datamix/config/*template/
+/datamix/data/*/
+!/datamix/data/.gitkeep
+/datamix/logs/**
+!/datamix/logs/.gitkeep
+/datamix/sft_results/
+/datamix/source_data/
