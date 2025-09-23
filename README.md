@@ -10,7 +10,7 @@
 ## 目录结构
 ```
 .
-├── datamix             #数据混合部件和文件自动生成部件
+├── utils               #自动化数据混合和文件生成工具
 ├── LLaMA-Factory       #LLaMA-Factory大模型sft代码仓库
 ├── LLaMA-Factory.yml   #配置LLaMA-Factory运行环境所需的python包及对应版本，仅供参考
 ├── opencompass         #opencompass大模型评测代码仓库
@@ -44,3 +44,21 @@ conda env create -f opencompass.yml
 ```
 
 ### 2.数据集准备
+#### 1) sft数据准备
+
+#### 2) LiveCodeBench评测数据准备
+因为opencompass目前尚不支持LiveCodeBench数据集的自动下载，所以我们需要手动从Huggingface上下载该数据集
+```
+cd opencompass
+mkdir data
+cd data
+
+git lfs install
+git clone https://huggingface.co/datasets/livecodebench/code_generation_lite
+git clone https://huggingface.co/datasets/livecodebench/execution-v2
+git clone https://huggingface.co/datasets/livecodebench/test_generation
+#PS: 如遇网络问题，可使用国内镜像站https://hf-mirror.com
+```
+
+### 3.自动化工具使用
+针对不同使用需求，utils目录下目前有两套文件自动生成的工具

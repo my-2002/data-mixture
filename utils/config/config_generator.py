@@ -34,9 +34,9 @@ class ConfigGenerator:
             merge_config = yaml.safe_load(open("config/train_template/merge_fft.yaml"))
 
         train_config['model_name_or_path'] = path_to_base_model
-        train_config['dataset'] = f"datamix_{mixing_strategy}_config{config_number}"
+        train_config['dataset'] = f"utils_{mixing_strategy}_config{config_number}"
         train_config['cutoff_len'] = cutoff_len
-        train_config['output_dir'] = f"../datamix/sft_results/{mixing_strategy}_config{config_number}/train"
+        train_config['output_dir'] = f"../utils/sft_results/{mixing_strategy}_config{config_number}/train"
         train_config['per_device_train_batch_size'] = batch_size
         train_config['gradient_accumulation_steps'] = grad_accum
         train_config['learning_rate'] = learning_rate
@@ -47,18 +47,18 @@ class ConfigGenerator:
 
         if finetuning_type == "lora":
             merge_config['model_name_or_path'] = path_to_base_model
-            merge_config['adapter_name_or_path'] = f"../datamix/sft_results/{mixing_strategy}_config{config_number}/train"
+            merge_config['adapter_name_or_path'] = f"../utils/sft_results/{mixing_strategy}_config{config_number}/train"
         else:
-            merge_config['model_name_or_path'] = f"../datamix/sft_results/{mixing_strategy}_config{config_number}/train"
-        merge_config['export_dir'] = f"../datamix/sft_results/{mixing_strategy}_config{config_number}/merge"
+            merge_config['model_name_or_path'] = f"../utils/sft_results/{mixing_strategy}_config{config_number}/train"
+        merge_config['export_dir'] = f"../utils/sft_results/{mixing_strategy}_config{config_number}/merge"
         with open(f"config/{mixing_strategy}_config{config_number}/merge.yaml", 'w', encoding='utf-8') as f:
             yaml.dump(merge_config, f, sort_keys=False, default_flow_style=False)
 
         # Generate dataset_info in LLaMA-Factory
         with open(f"../LLaMA-Factory/data/dataset_info.json", 'r', encoding='utf-8') as file:
             dataset_info = json.load(file)
-        dataset_info[f'datamix_{mixing_strategy}_config{config_number}'] = {
-            "file_name": f"../../datamix/data/{mixing_strategy}_config{config_number}/train_data.json"
+        dataset_info[f'utils_{mixing_strategy}_config{config_number}'] = {
+            "file_name": f"../../utils/data/{mixing_strategy}_config{config_number}/train_data.json"
         }
         with open(f"../LLaMA-Factory/data/dataset_info.json", 'w', encoding='utf-8') as file:
             json.dump(dataset_info, file, indent=2)

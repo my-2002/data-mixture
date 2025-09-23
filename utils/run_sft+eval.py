@@ -36,5 +36,5 @@ ConfigGenerator().generate_train_config(
 
 ConfigGenerator().generate_eval_config(
     model_name = f"{args.mixing_strategy}_config{args.config_number}",
-    path_to_eval_model = f"../datamix/sft_results/{args.mixing_strategy}_config{args.config_number}/merge"
+    path_to_eval_model = f"../utils/sft_results/{args.mixing_strategy}_config{args.config_number}/merge"
 )

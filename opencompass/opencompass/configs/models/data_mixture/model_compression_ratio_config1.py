@@ -4,7 +4,7 @@ models = [
     dict(
         type=HuggingFaceBaseModel,
         abbr='qwen2.5-7b-hf',
-        path='../datamix/sft_results/compression_ratio_config1/merge/',
+        path='../utils/sft_results/compression_ratio_config1/merge/',
         max_out_len=2048,
         batch_size=16,
         run_cfg=dict(num_gpus=4),

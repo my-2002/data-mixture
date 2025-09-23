@@ -50,7 +50,7 @@ logging.info("Mixing phase completed")
 # 2.训练阶段
 logging.info("Training phase started")
 
-train_config="../datamix/config/size_ratio/train.yaml"
+train_config="../utils/config/size_ratio/train.yaml"
 
 return_code = subprocess.run(['llamafactory-cli', 'train', train_config], cwd='../../LLaMA-Factory', env=env).returncode
 if return_code == 0:
@@ -64,7 +64,7 @@ logging.info("Training phase completed")
 # 3.模型合并阶段
 logging.info("Merging phase started")
 
-merge_config="../datamix/config/size_ratio/merge.yaml"
+merge_config="../utils/config/size_ratio/merge.yaml"
 
 return_code = subprocess.run(['llamafactory-cli', 'export', merge_config], cwd='../../LLaMA-Factory', env=env).returncode
 if return_code == 0:
