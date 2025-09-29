@@ -4,8 +4,8 @@
 本仓库用于对大模型的训练数据进行混合、sft训练和在LiveCodeBench评测集上进行评测，同时支持快速生成训练和评测所需的配置文件和脚本代码
 
 ## 主要功能
-1.大模型在LLaMA-Factory框架上的sft训练配置文件自动生成
-2.大模型在opencompass上的LiveCodeBench评测配置文件和脚本文件自动生成
+1.大模型在LLaMA-Factory框架上的sft训练流程所需文件自动生成
+2.大模型在opencompass上的LiveCodeBench评测流程所需文件自动生成
 
 ## 目录结构
 ```
@@ -63,18 +63,18 @@ git clone https://huggingface.co/datasets/livecodebench/test_generation
 ```
 
 ### 3.自动化工具使用
-针对不同使用需求，utils目录下目前有两份自动生成配置文件的代码，分别为 [run_eval.py](utils/run_eval.py) 和 [run_sft+eval.py](utils/run_sft+eval.py)
+针对不同使用需求，utils目录下目前有两份自动生成配置文件的代码，分别为 [run_eval.py](utils/run_eval.py) 和 [run_sft.py](utils/run_sft.py)
 #### 1) run_eval.py
 若你已经有训练好的模型，只需要进行LiveCodeBench的测试，则只需要执行
 ```
 conda activate opencompass
 cd utils
 python3 run_eval.py \
-    -M/--model your_model_name  \
+    -M/--model_name your_model_name  \
     -PATH/--path_to_model your_model_path
 ```
-更多可选参数详见 [run_eval.py](utils/run_eval.py)
-之后，根据你所在服务器的不同，执行不同的评测命令
+更多可选参数详见 [run_eval.py](utils/run_eval.py)(PS：暂时还没加入更多可选参数)
+之后，根据你所在的不同服务器，执行不同的评测命令
 ```
 cd ../opencompass
 
@@ -85,6 +85,28 @@ sbatch scripts/your_model_name.sh
 ```
 评测结束后，你就可以在 [opencompass/outputs/your_model_name](opencompass/outputs/your_model_name) 目录下看到评测结果
 
+#### 2) run_sft.py
+若你需要sft模型，则需要执行
+```
+conda activate LLaMA-Factory
+cd utils
+python3 run_sft.py  \
+    -M/--model the_path_of_base_model   \
+    -D/--dataset the_path_of_dataset    \
+    -FT/--finetuning-type ["lora", "fft"]
+```
+更多可选参数详见 [run_sft.py](utils/run_sft.py)(PS：暂时还没加入更多可选参数)
+该程序会在stdout输出这次训练任务的full name。之后，根据你所在的不同服务器，执行不同的训练命令
+```
+cd training_scripts
+
+#对于绝大部分普通服务器
+python3 full_name.py
+#对于使用slurm作业调度系统的服务器（如中科大超算中心）
+sbatch run_full_name.sh
+```
+训练过程中，你可以在 [utils/logs](utils/logs) 文件夹下查看训练进度，对于使用slurm作业调度系统的服务器，你还可以在 [utils/training_scripts](utils/training_scripts) 文件夹下查看更详细的训练进度和报错信息
+训练结束后，你可以在 [utils/sft_results/full_name/merge](utils/sft_results/full_name/merge) 文件夹下看到sft好的模型
+
 ## TODO LIST
-1.为run_eval和run_sft+eval增加更多的可选参数
-2.增加自动混合数据的功能
+1.为run_eval和run_sft增加更多的可选参数

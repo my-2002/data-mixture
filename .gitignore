@@ -337,3 +337,5 @@
 !/utils/logs/.gitkeep
 /utils/sft_results/
 /utils/source_data/
+/utils/training_scripts/**
+!/utils/training_scripts/__init__.py

@@ -3,7 +3,7 @@ from opencompass.models import HuggingFaceBaseModel
 models = [
     dict(
         type=HuggingFaceBaseModel,
-        abbr='deepseek-r1-distill-qwen-1.5b-hf',
+        abbr='{model_name}',
         path="{path_to_eval_model}",
         max_out_len=32768,
         batch_size=8,
