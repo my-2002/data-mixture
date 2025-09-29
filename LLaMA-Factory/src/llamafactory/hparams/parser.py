@@ -32,6 +32,7 @@ from transformers.utils import is_torch_bf16_gpu_available, is_torch_npu_availab
 from ..extras import logging
 from ..extras.constants import CHECKPOINT_NAMES, EngineName
 from ..extras.misc import check_dependencies, check_version, get_current_device, is_env_enabled
+from ..extras.packages import is_transformers_version_greater_than
 from .data_args import DataArguments
 from .evaluation_args import EvaluationArguments
 from .finetuning_args import FinetuningArguments
@@ -111,8 +112,8 @@ def _verify_model_args(
         raise ValueError("Adapter is only valid for the LoRA method.")
 
     if model_args.quantization_bit is not None:
-        if finetuning_args.finetuning_type != "lora":
-            raise ValueError("Quantization is only compatible with the LoRA method.")
+        if finetuning_args.finetuning_type not in ["lora", "oft"]:
+            raise ValueError("Quantization is only compatible with the LoRA or OFT method.")
 
         if finetuning_args.pissa_init:
             raise ValueError("Please use scripts/pissa_init.py to initialize PiSSA for a quantized model.")
@@ -146,7 +147,7 @@ def _check_extra_dependencies(
         check_version("mixture-of-depth>=1.1.6", mandatory=True)
 
     if model_args.infer_backend == EngineName.VLLM:
-        check_version("vllm>=0.4.3,<=0.10.0")
+        check_version("vllm>=0.4.3,<=0.10.2")
         check_version("vllm", mandatory=True)
     elif model_args.infer_backend == EngineName.SGLANG:
         check_version("sglang>=0.4.5")
@@ -173,7 +174,8 @@ def _check_extra_dependencies(
     if training_args is not None:
         if training_args.deepspeed:
             # pin deepspeed version < 0.17 because of https://github.com/deepspeedai/DeepSpeed/issues/7347
-            check_version("deepspeed>=0.10.0,<=0.16.9", mandatory=True)
+            check_version("deepspeed", mandatory=True)
+            check_version("deepspeed>=0.10.0,<=0.16.9")
 
         if training_args.predict_with_generate:
             check_version("jieba", mandatory=True)
@@ -303,6 +305,9 @@ def get_train_args(args: Optional[Union[dict[str, Any], list[str]]] = None) -> _
 
     if model_args.use_unsloth and is_deepspeed_zero3_enabled():
         raise ValueError("Unsloth is incompatible with DeepSpeed ZeRO-3.")
+
+    if data_args.neat_packing and is_transformers_version_greater_than("4.53.0"):
+        raise ValueError("Neat packing is incompatible with transformers>=4.53.0.")
 
     _set_env_vars()
     _verify_model_args(model_args, data_args, finetuning_args)

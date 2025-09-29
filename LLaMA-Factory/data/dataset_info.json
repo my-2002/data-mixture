@@ -259,6 +259,10 @@
       "assistant_tag": "assistant"
     }
   },
+  "infinity_instruct": {
+    "hf_hub_url": "BAAI/Infinity-Instruct",
+    "formatting": "sharegpt"
+  },
   "agent_instruct": {
     "hf_hub_url": "THUDM/AgentInstruct",
     "ms_hub_url": "ZhipuAI/AgentInstruct",
@@ -700,6 +704,36 @@
       "prompt": "text"
     }
   },
+  "cci3_hq": {
+    "hf_hub_url": "BAAI/CCI3-HQ",
+    "columns": {
+      "prompt": "text"
+    }
+  },
+  "cci3_data": {
+    "hf_hub_url": "BAAI/CCI3-Data",
+    "columns": {
+      "prompt": "text"
+    }
+  },
+  "cci4_base": {
+    "hf_hub_url": "BAAI/CCI4.0-M2-Base-v1",
+    "columns": {
+      "prompt": "text"
+    }
+  },
+  "cci4_cot": {
+    "hf_hub_url": "BAAI/CCI4.0-M2-CoT-v1",
+    "columns": {
+      "prompt": "text"
+    }
+  },
+  "cci4_extra": {
+    "hf_hub_url": "BAAI/CCI4.0-M2-Extra-v1",
+    "columns": {
+      "prompt": "text"
+    }
+  },
   "the_stack": {
     "hf_hub_url": "bigcode/the-stack",
     "ms_hub_url": "AI-ModelScope/the-stack",
@@ -714,20 +748,5 @@
       "prompt": "content"
     },
     "folder": "python"
-  },
-  "utils_uniform_config1": {
-    "file_name": "../../utils/data/uniform_config1/train_data.json"
-  },
-  "utils_compression_ratio_config1": {
-    "file_name": "../../utils/data/compression_ratio_config1/train_data.json"
-  },
-  "utils_size_ratio": {
-    "file_name": "../../utils/data/size_ratio/train_data.json"
-  },
-  "utils_compression_ratio_config2": {
-    "file_name": "../../utils/data/compression_ratio_config2/train_data.json"
-  },
-  "utils_baseline_opc_config2": {
-    "file_name": "../../utils/data/baseline_opc_config2/train_data.json"
   }
 }

@@ -320,6 +320,10 @@
 
 # aliyun
 /opencompass/core.*
+/opencompass/examples/data_mixture/**
+!/opencompass/examples/data_mixture/.gitkeep
+/opencompass/opencompass/configs/models/data_mixture/**
+!/opencompass/opencompass/configs/models/data_mixture/.gitkeep
 
 ########################################################################################################
 # Ignore rules for utils

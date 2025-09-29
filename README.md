@@ -27,6 +27,7 @@ conda create --name LLaMA-Factory python=3.10
 conda activate LLaMA-Factory
 cd LLaMA-Factory
 pip install -e ".[torch,metrics]" --no-build-isolation
+pip install deepspeed==0.16.4   #为了fft，需要额外安装deepspeed
 
 #opencompass环境配置
 conda create --name opencompass python=3.10
