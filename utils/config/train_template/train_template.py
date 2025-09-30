@@ -16,7 +16,7 @@ logging.basicConfig(filename='../logs/full_name.log', level=logging.INFO, format
 # 1.Training phase
 logging.info("Training phase started")
 
-train_config="../datamix/config/full_name/train.yaml"
+train_config="../utils/config/full_name/train.yaml"
 
 return_code = subprocess.run(['llamafactory-cli', 'train', train_config], cwd='../../LLaMA-Factory').returncode
 if return_code == 0:
@@ -30,7 +30,7 @@ logging.info("Training phase completed")
 # 2.Merging phase
 logging.info("Merging phase started")
 
-merge_config="../datamix/config/full_name/merge.yaml"
+merge_config="../utils/config/full_name/merge.yaml"
 
 return_code = subprocess.run(['llamafactory-cli', 'export', merge_config], cwd='../../LLaMA-Factory').returncode
 if return_code == 0:
