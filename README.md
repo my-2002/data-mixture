@@ -33,7 +33,7 @@ pip install deepspeed==0.16.4   #为了fft，需要额外安装deepspeed
 conda create --name opencompass python=3.10
 conda activate opencompass
 cd opencompass
-pip install -e .
+pip install -e ".[vllm]"
 ```
 备选方案：根据环境配置文件进行配置
 ```
@@ -73,13 +73,13 @@ python3 run_eval.py \
     -M/--model_name your_model_name  \
     -PATH/--path_to_model your_model_path
 ```
-更多可选参数详见 [run_eval.py](utils/run_eval.py)(PS：暂时还没加入更多可选参数)
+更多可选参数详见 [run_eval.py](utils/run_eval.py)
 之后，根据你所在的不同服务器，执行不同的评测命令
 ```
 cd ../opencompass
 
 #对于绝大部分普通服务器
-opencompass examples/data_mixture/eval_your_model_name.py
+opencompass examples/data_mixture/eval_your_model_name.py -a vllm
 #对于使用slurm作业调度系统的服务器（如中科大超算中心）
 sbatch scripts/your_model_name.sh
 ```
@@ -95,7 +95,7 @@ python3 run_sft.py  \
     -D/--dataset the_path_of_dataset    \
     -FT/--finetuning-type ["lora", "fft"]
 ```
-更多可选参数详见 [run_sft.py](utils/run_sft.py)(PS：暂时还没加入更多可选参数)
+更多可选参数详见 [run_sft.py](utils/run_sft.py)
 该程序会在stdout输出这次训练任务的full name。之后，根据你所在的不同服务器，执行不同的训练命令
 ```
 cd training_scripts

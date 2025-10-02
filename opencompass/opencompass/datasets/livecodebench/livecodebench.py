@@ -52,7 +52,7 @@ class Test:
 class LCBCodeGenerationDataset(BaseDataset):
 
     @staticmethod
-    def load(path: str = 'opencompass/code_generation_lite',
+    def load(path: str = 'opencompass/code_generation',
              local_mode: bool = False,
              release_version: str = 'release_v1',
              start_date: str = None,
@@ -103,9 +103,9 @@ class LCBCodeGenerationDataset(BaseDataset):
         path = get_data_path(path, local_mode=local_mode)
 
         dataset = load_dataset(
-            path,  # 'livecodebench/code_generation_lite'
+            path,  # 'livecodebench/code_generation'
             split='test',
-            version_tag=release_version,
+            #version_tag=release_version,
             trust_remote_code=True)
 
         dataset = dataset.map(transform)
@@ -204,7 +204,7 @@ class LCBTestOutputPredictionDataset(BaseDataset):
 class LCBSelfRepairDataset(BaseDataset):
 
     @staticmethod
-    def load(path: str = 'livecodebench/code_generation_lite',
+    def load(path: str = 'livecodebench/code_generation',
              local_mode: bool = False,
              release_version: str = 'release_v1'):
 
@@ -223,7 +223,7 @@ class LCBSelfRepairDataset(BaseDataset):
 
         dataset = load_dataset(path,
                                split='test',
-                               version_tag=release_version,
+                               #version_tag=release_version,
                                trust_remote_code=True)
         dataset = dataset.map(transform)
 

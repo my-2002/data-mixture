@@ -318,6 +318,11 @@ DATASETS_MAPPING = {
         "hf_id": "",
         "local": "./data/code_generation_lite",
     },
+    "opencompass/code_generation": {
+        "ms_id": "",
+        "hf_id": "",
+        "local": "./data/code_generation",
+    },
     "opencompass/execution-v2": {
         "ms_id": "",
         "hf_id": "",

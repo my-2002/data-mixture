@@ -11,11 +11,11 @@ class ConfigGenerator:
         self, 
         finetuning_type : str,
         dataset : str,
-        model : str
+        model : str,
         #path_to_base_model : str,
         #cutoff_len : int,
         #epoch : float,
-        #batch_size : int,
+        batch_size : int
         #grad_accum : int,
         #learning_rate : float,
         #warmup_ratio : float
@@ -46,7 +46,7 @@ class ConfigGenerator:
         train_config['dataset'] = dataset_name
         #train_config['cutoff_len'] = cutoff_len
         train_config['output_dir'] = f"../utils/sft_results/{full_name}/train"
-        #train_config['per_device_train_batch_size'] = batch_size
+        train_config['per_device_train_batch_size'] = batch_size
         #train_config['gradient_accumulation_steps'] = grad_accum
         #train_config['learning_rate'] = learning_rate
         #train_config['num_train_epochs'] = epoch
@@ -90,6 +90,7 @@ class ConfigGenerator:
 
     def generate_eval_config(
             self,
+            max_out_len : int,
             model_name : str = None,
             path_to_eval_model : str = None
     ):
@@ -107,6 +108,7 @@ class ConfigGenerator:
             content = f.read()
         modified_content = content.replace("{path_to_eval_model}", path_to_eval_model)
         modified_content = modified_content.replace("{model_name}", model_name)
+        modified_content = modified_content.replace("{max_out_len}", str(max_out_len))
         with open(f"../opencompass/opencompass/configs/models/data_mixture/model_{model_name}.py", 'w', encoding='utf-8') as f:
             f.write(modified_content)
 

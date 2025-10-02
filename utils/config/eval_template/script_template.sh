@@ -14,4 +14,4 @@ echo $SLURM_JOB_NODELIST
 module load cuda/12.4
 echo This job has allocated $SLURM_JOB_CPUS_PER_NODE cpu core.
 
-opencompass examples/data_mixture/eval_{model_name}.py
+opencompass examples/data_mixture/eval_{model_name}.py -a vllm
