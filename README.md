@@ -56,7 +56,7 @@ mkdir data
 cd data
 
 git lfs install
-git clone https://huggingface.co/datasets/livecodebench/code_generation_lite
+git clone https://huggingface.co/datasets/livecodebench/code_generation
 git clone https://huggingface.co/datasets/livecodebench/execution-v2
 git clone https://huggingface.co/datasets/livecodebench/test_generation
 #PS: 如遇网络问题，可使用国内镜像站https://hf-mirror.com
