@@ -13,12 +13,14 @@ class ConfigGenerator:
         dataset : str,
         model : str,
         #path_to_base_model : str,
-        #cutoff_len : int,
-        #epoch : float,
-        batch_size : int
-        #grad_accum : int,
-        #learning_rate : float,
-        #warmup_ratio : float
+        cutoff_len : int,
+        logging_steps : int,
+        save_steps : int,
+        batch_size : int,
+        grad_accum : int,
+        learning_rate : float,
+        epochs : float,
+        warmup_ratio : float
     ):
         if finetuning_type not in ["lora", "fft"]:
             raise ValueError("Unsupported finetuning type")
@@ -44,13 +46,15 @@ class ConfigGenerator:
 
         train_config['model_name_or_path'] = model
         train_config['dataset'] = dataset_name
-        #train_config['cutoff_len'] = cutoff_len
+        train_config['cutoff_len'] = cutoff_len
         train_config['output_dir'] = f"../utils/sft_results/{full_name}/train"
+        train_config['logging_steps'] = logging_steps
+        train_config['save_steps'] = save_steps
         train_config['per_device_train_batch_size'] = batch_size
-        #train_config['gradient_accumulation_steps'] = grad_accum
-        #train_config['learning_rate'] = learning_rate
-        #train_config['num_train_epochs'] = epoch
-        #train_config['warmup_ratio'] = warmup_ratio
+        train_config['gradient_accumulation_steps'] = grad_accum
+        train_config['learning_rate'] = learning_rate
+        train_config['num_train_epochs'] = epochs
+        train_config['warmup_ratio'] = warmup_ratio
         with open(f"config/{full_name}/train.yaml", 'w', encoding='utf-8') as f:
             yaml.dump(train_config, f, sort_keys=False, default_flow_style=False)
 
@@ -91,6 +95,8 @@ class ConfigGenerator:
     def generate_eval_config(
             self,
             max_out_len : int,
+            batch_size : int,
+            gpu_cnt : int,
             model_name : str = None,
             path_to_eval_model : str = None
     ):
@@ -109,6 +115,8 @@ class ConfigGenerator:
         modified_content = content.replace("{path_to_eval_model}", path_to_eval_model)
         modified_content = modified_content.replace("{model_name}", model_name)
         modified_content = modified_content.replace("{max_out_len}", str(max_out_len))
+        modified_content = modified_content.replace("{batch_size}", str(batch_size))
+        modified_content = modified_content.replace("{gpu_cnt}", str(gpu_cnt))
         with open(f"../opencompass/opencompass/configs/models/data_mixture/model_{model_name}.py", 'w', encoding='utf-8') as f:
             f.write(modified_content)
 

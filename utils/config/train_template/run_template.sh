@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J job_name
+#SBATCH -J full_name
 #SBATCH -o job-full_name.log
 #SBATCH -e job-full_name.err
 #SBATCH -p GPU-8A100
